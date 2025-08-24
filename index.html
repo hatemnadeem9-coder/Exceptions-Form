@@ -1,341 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exceptions Form</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .fade-in {
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border-left-color: #09f;
-            animation: spin 1s ease infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .readonly-input {
-            background-color: #f3f4f6; /* gray-100 */
-            cursor: not-allowed;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exceptions Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: #09f;
+            animation: spin 1s ease infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .readonly-input {
+            background-color: #f3f4f6; /* gray-100 */
+            cursor: not-allowed;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen p-4 sm:p-6 lg:p-8">
 
-    <div class="w-full max-w-4xl">
-                <div id="form-container" class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-gray-200 fade-in">
-            <div class="mb-6 text-center">
-                <h1 class="text-3xl font-bold text-gray-800">Exceptions Form</h1>
-                <p class="text-gray-500 mt-2">Please fill out the details for your Exception request below.</p>
-            </div>
-            
-            <form id="event-form">
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div>
-                        <label for="agent-id" class="block text-sm font-medium text-gray-700 mb-1">ID</label>
-                        <input type="text" id="agent-id" list="agent-id-list" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" placeholder="Type to search for ID...">
-                        <datalist id="agent-id-list">
-                                                    </datalist>
-                    </div>
-                    <div>
-                        <label for="agent-name" class="block text-sm font-medium text-gray-700 mb-1">Agent Name</label>
-                        <input type="text" id="agent-name" readonly class="w-full px-4 py-2 border border-gray-300 rounded-lg readonly-input">
-                    </div>
-                     <div>
-                        <label for="hr-code" class="block text-sm font-medium text-gray-700 mb-1">HR Code</label>
-                        <input type="text" id="hr-code" readonly class="w-full px-4 py-2 border border-gray-300 rounded-lg readonly-input">
-                    </div>
-                    <div>
-                        <label for="team-leader" class="block text-sm font-medium text-gray-700 mb-1">Team Leader</label>
-                        <input type="text" id="team-leader" readonly class="w-full px-4 py-2 border border-gray-300 rounded-lg readonly-input">
-                    </div>
-                </div>
+    <div class="w-full max-w-4xl">
+        <!-- Form Container -->
+        <div id="form-container" class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-gray-200 fade-in">
+            <div class="mb-6 text-center">
+                <h1 class="text-3xl font-bold text-gray-800">Exceptions Form</h1>
+                <p class="text-gray-500 mt-2">Please fill out the details for your Exception request below.</p>
+            </div>
+            
+            <form id="event-form">
+                <!-- Main Details Section -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="agent-id" class="block text-sm font-medium text-gray-700 mb-1">ID</label>
+                        <input type="text" id="agent-id" list="agent-id-list" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" placeholder="Type to search for ID...">
+                        <datalist id="agent-id-list">
+                            <!-- IDs will be populated by JavaScript -->
+                        </datalist>
+                    </div>
+                    <div>
+                        <label for="agent-name" class="block text-sm font-medium text-gray-700 mb-1">Agent Name</label>
+                        <input type="text" id="agent-name" readonly class="w-full px-4 py-2 border border-gray-300 rounded-lg readonly-input">
+                    </div>
+                    <div>
+                        <label for="team-leader" class="block text-sm font-medium text-gray-700 mb-1">Team Leader</label>
+                        <input type="text" id="team-leader" readonly class="w-full px-4 py-2 border border-gray-300 rounded-lg readonly-input">
+                    </div>
+                     <div>
+                        <label for="hr-code" class="block text-sm font-medium text-gray-700 mb-1">HR Code</label>
+                        <input type="text" id="hr-code" readonly class="w-full px-4 py-2 border border-gray-300 rounded-lg readonly-input">
+                    </div>
+                    <div>
+                        <label for="exception-type" class="block text-sm font-medium text-gray-700 mb-1">Exception Type</label>
+                        <select id="exception-type" name="exception-type" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-blue-500">
+                            <option value="" disabled selected>Select a Type</option>
+                            <option value="Follow up">Follow up</option>
+                            <option value="Meeting">Meeting</option>
+                            <option value="Shadowing">Shadowing</option>
+                            <option value="Happy Call">Happy Call</option>
+                            <option value="Task">Task</option>
+                            <option value="Technical issue">Technical issue</option>
+                            <option value="Training">Training</option>
+                            <option value="Support">Support</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="exception-reason" class="block text-sm font-medium text-gray-700 mb-1">Exception Reason</label>
+                        <textarea id="exception-reason" name="exception-reason" rows="1" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-blue-500"></textarea>
+                    </div>
+                </div>
 
-                                <div class="space-y-4 mb-6" id="date-time-section">
-                    <h2 class="text-xl font-semibold text-gray-700 border-b pb-2">Activity Details</h2>
-                                    </div>
+                <!-- Dynamic Date and Time Section -->
+                <div class="space-y-4 mb-6" id="date-time-section">
+                    <h2 class="text-xl font-semibold text-gray-700 border-b pb-2">Date & Time Entries</h2>
+                    <!-- This container will hold the dynamically added date/time fields -->
+                </div>
 
-                                <div class="flex items-center gap-4 mb-8">
-                    <button type="button" id="add-date-btn" class="bg-blue-600 text-white font-semibold py-2 px-5 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition shadow-sm">
-                        Add Entry
-                    </button>
-                    <p id="date-counter" class="text-sm text-gray-500">1 of 10 entries added.</p>
-                </div>
+                <!-- Action Buttons for Dates -->
+                <div class="flex items-center gap-4 mb-8">
+                    <button type="button" id="add-date-btn" class="bg-blue-600 text-white font-semibold py-2 px-5 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition shadow-sm">
+                        Add Entry
+                    </button>
+                    <p id="date-counter" class="text-sm text-gray-500">1 of 10 entries added.</p>
+                </div>
 
-                                <div class="text-center">
-                    <button type="submit" id="submit-btn" class="w-full md:w-auto bg-green-600 text-white font-bold py-3 px-12 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-transform transform hover:scale-105 shadow-lg flex items-center justify-center gap-2">
-                        Submit
-                    </button>
-                </div>
-            </form>
-                        <div class="text-center border-t border-gray-200 pt-4 mt-8">
-                <p class="text-base text-orange-500 font-semibold">Created By Hatem Medhat</p>
-            </div>
-        </div>
+                <!-- Form Submission Button -->
+                <div class="text-center">
+                    <button type="submit" id="submit-btn" class="w-full md:w-auto bg-green-600 text-white font-bold py-3 px-12 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-transform transform hover:scale-105 shadow-lg flex items-center justify-center gap-2">
+                        Submit
+                    </button>
+                </div>
+            </form>
+            <!-- Signature -->
+            <div class="text-center border-t border-gray-200 pt-4 mt-8">
+                <p class="text-base text-orange-500 font-semibold">Created By Hatem Medhat</p>
+            </div>
+        </div>
 
-                <div id="submission-status-container" class="hidden bg-white p-8 rounded-xl shadow-lg border border-gray-200 fade-in text-center">
-             <div id="loading-spinner" class="spinner mx-auto mb-4"></div>
-             <h2 id="status-heading" class="text-2xl font-bold text-gray-800">Submitting...</h2>
-             <p id="status-message" class="text-gray-600 mt-2">Please wait while we send your activity details.</p>
-             <div class="text-center mt-8">
-                <button id="new-form-btn" class="hidden bg-gray-600 text-white font-bold py-2 px-8 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition shadow-sm">
-                    Submit Another Response
-                </button>
-            </div>
-        </div>
-    </div>
+        <!-- Submission Status Container (Initially Hidden) -->
+        <div id="submission-status-container" class="hidden bg-white p-8 rounded-xl shadow-lg border border-gray-200 fade-in text-center">
+             <div id="loading-spinner" class="spinner mx-auto mb-4"></div>
+             <h2 id="status-heading" class="text-2xl font-bold text-gray-800">Submitting...</h2>
+             <p id="status-message" class="text-gray-600 mt-2">Please wait while we send your activity details.</p>
+             <div class="text-center mt-8">
+                <button id="new-form-btn" class="hidden bg-gray-600 text-white font-bold py-2 px-8 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition shadow-sm">
+                    Submit Another Response
+                </button>
+            </div>
+        </div>
+    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- Agent Data from your new provided sheet ---
-            const agentsData = [
-                { id: 'X2003111', hrCode: '825811', tl: 'maher', agentName: 'Abanoub Makram' }, { id: 'X2047656', hrCode: '838865', tl: 'Kirolos', agentName: 'Abdel Aaziz Ashraf' }, { id: 'X2027633', hrCode: '832336', tl: 'Kirolos', agentName: 'AbdElrahman Adel Mohamed' }, { id: 'X1264160', hrCode: '821310', tl: 'Youhana', agentName: 'Abdelrahman Salem' }, { id: 'X1387122', hrCode: '824283', tl: 'maher', agentName: 'Abdullah Tariq' }, { id: 'X2091475', hrCode: '844909', tl: 'Kirolos', agentName: 'Ahmed Elmohamdi' }, { id: 'X2100111', hrCode: '844985', tl: 'Youhana', agentName: 'Alaa Hamdy' }, { id: 'X1370543', hrCode: '824262', tl: 'maher', agentName: 'Alaa Tariq' }, { id: 'X1264180', hrCode: '821313', tl: 'Hamed', agentName: 'Ali Ashraf' }, { id: 'X2065273', hrCode: '838916', tl: 'Youhana', agentName: 'Ali Mohamed' }, { id: 'YEG002272', hrCode: '40544', tl: 'Youhana', agentName: 'Alshimaa Ahmed' }, { id: 'X2094368', hrCode: '844965', tl: 'Kirolos', agentName: 'Amal Ahmed' }, { id: 'X2040351', hrCode: '835769', tl: 'Kirolos', agentName: 'Amani Assem' }, { id: 'X1325802', hrCode: '823222', tl: 'maher', agentName: 'Amr Ahmed' }, { id: 'X2079589', hrCode: '842569', tl: 'Kirolos', agentName: 'Anoud Mohamed' }, { id: 'X2077125', hrCode: '842554', tl: 'maher', agentName: 'Aya Nabil' }, { id: 'X1277043', hrCode: '821327', tl: 'Hamed', agentName: 'Aya Rajab' }, { id: 'X2047645', hrCode: '838869', tl: 'Kirolos', agentName: 'Bassant Beshara Nas' }, { id: 'X2002026', hrCode: '825806', tl: 'maher', agentName: 'Beshoy Zekry' }, { id: 'X1325803', hrCode: '823223', tl: 'maher', agentName: 'David Emad' }, { id: 'X2079590', hrCode: '842570', tl: 'Kirolos', agentName: 'Dina Anwar' }, { id: 'X2082092', hrCode: '843497', tl: 'Youhana', agentName: 'Dina Atef' }, { id: 'X2094369', hrCode: '844966', tl: 'Kirolos', agentName: 'Doaa Ahmed' }, { id: 'X2091476', hrCode: '844910', tl: 'Kirolos', agentName: 'Donia Hosny' }, { id: 'X2082093', hrCode: '843498', tl: 'Youhana', agentName: 'Ebtesam Mahrous' }, { id: 'X2047646', hrCode: '838870', tl: 'Kirolos', agentName: 'Elaria Atef' }, { id: 'X2079591', hrCode: '842571', tl: 'Kirolos', agentName: 'Elham Abdelsalam' }, { id: 'X2047647', hrCode: '838871', tl: 'Kirolos', agentName: 'Eman Marey' }, { id: 'X2082094', hrCode: '843499', tl: 'Youhana', agentName: 'Eman Hossny' }, { id: 'X2047648', hrCode: '838872', tl: 'Kirolos', agentName: 'Enas Adel' }, { id: 'X2047649', hrCode: '838873', tl: 'Kirolos', agentName: 'Eslam Azhary' }, { id: 'X2094370', hrCode: '844967', tl: 'Kirolos', agentName: 'Esraa Ahmed' }, { id: 'X2047650', hrCode: '838874', tl: 'Kirolos', agentName: 'Esraa Ibrahim' }, { id: 'X2091477', hrCode: '844911', tl: 'Kirolos', agentName: 'Farah Atef' }, { id: 'X2047651', hrCode: '838875', tl: 'Kirolos', agentName: 'Fairouz Fanos' }, { id: 'X2047652', hrCode: '838876', tl: 'Kirolos', agentName: 'Filopateer Boshra' }, { id: 'X2047653', hrCode: '838877', tl: 'Kirolos', agentName: 'Habiba Montaser' }, { id: 'X2047654', hrCode: '838878', tl: 'Kirolos', agentName: 'Hagar Magdi' }, { id: 'X2094371', hrCode: '844968', tl: 'Kirolos', agentName: 'Heba Zakaria' }, { id: 'X2047655', hrCode: '838879', tl: 'Kirolos', agentName: 'Hisham Yosri' }, { id: 'X2047657', hrCode: '838880', tl: 'Kirolos', agentName: 'Hossam Zohair' }, { id: 'X2047658', hrCode: '838881', tl: 'Kirolos', agentName: 'Ibraheem Mamdoh' }, { id: 'X2047659', hrCode: '838882', tl: 'Kirolos', agentName: 'Eman Elsayed' }, { id: 'X2047660', hrCode: '838883', tl: 'Kirolos', agentName: 'Islam Siam' }, { id: 'X2047661', hrCode: '838884', tl: 'Kirolos', agentName: 'Lama Nabil' }, { id: 'X2047662', hrCode: '838885', tl: 'Kirolos', agentName: 'Lamiaa Essam' }, { id: 'X2047663', hrCode: '838886', tl: 'Kirolos', agentName: 'Maha Muhammed' }, { id: 'X2047664', hrCode: '838887', tl: 'Kirolos', agentName: 'Maha Tarek' }, { id: 'X2047665', hrCode: '838888', tl: 'Kirolos', agentName: 'Mahmod Ahmad' }, { id: 'X2047666', hrCode: '838889', tl: 'Kirolos', agentName: 'Mahmoud Ashraf' }, { id: 'X2047667', hrCode: '838890', tl: 'Kirolos', agentName: 'Mahmoud Anwar' }, { id: 'X2047668', hrCode: '838891', tl: 'Kirolos', agentName: 'Mahmoud Ibrahem' }, { id: 'X2047669', hrCode: '838892', tl: 'Kirolos', agentName: 'Mahmod Rashad' }, { id: 'X2047670', hrCode: '838893', tl: 'Kirolos', agentName: 'Mahrail Magid' }, { id: 'X2047671', hrCode: '838894', tl: 'Kirolos', agentName: 'Malak Abdelnaser' }, { id: 'X2047672', hrCode: '838895', tl: 'Kirolos', agentName: 'Manal Mohamed' }, { id: 'X2047673', hrCode: '838896', tl: 'Kirolos', agentName: 'Maram Mohamed' }, { id: 'X2047674', hrCode: '838897', tl: 'Kirolos', agentName: 'Mariam Moustafa' }, { id: 'X2047675', hrCode: '838898', tl: 'Kirolos', agentName: 'Mariam Nasser' }, { id: 'X2047676', hrCode: '838899', tl: 'Kirolos', agentName: 'Martina Nabil' }, { id: 'X2047677', hrCode: '838900', tl: 'Kirolos', agentName: 'Maiada Ali' }, { id: 'X2047678', hrCode: '838901', tl: 'Kirolos', agentName: 'Mayar Ismail' }, { id: 'X2002024', hrCode: '825804', tl: 'maher', agentName: 'Mina Ezat' }, { id: 'X1160340', hrCode: '817339', tl: 'maher', agentName: 'MinaMelad' }, { id: 'X1059943', hrCode: '40951', tl: 'Hamed', agentName: 'Moamen Samy' }, { id: 'X2046113', hrCode: '837347', tl: 'Youhana', agentName: 'Mohamed Ahmed' }, { id: 'X2141350', hrCode: '851052', tl: 'Kirolos', agentName: 'Mohamed Hamed Atya' }, { id: 'X2141351', hrCode: '851054', tl: 'Kirolos', agentName: 'Mohammed ibraheem' }, { id: 'X723901', hrCode: '40628', tl: 'Hamed', agentName: 'Mona hassan' }, { id: 'X1387129', hrCode: '824284', tl: 'maher', agentName: 'Mosaab Ali' }, { id: 'X1277020', hrCode: '821319', tl: 'Hamed', agentName: 'Muhammad Ismail' }, { id: 'X2122166', hrCode: '851055', tl: 'Kirolos', agentName: 'Muhammed Fathi' }, { id: 'X2108397', hrCode: '848192', tl: 'Kirolos', agentName: 'Nada Hamada' }, { id: 'X2082090', hrCode: '843495', tl: 'Youhana', agentName: 'Nermine Elfeki' }, { id: 'X2141339', hrCode: '851056', tl: 'Youhana', agentName: 'Nesma Mohamed' }, { id: 'X1075901', hrCode: '40986', tl: 'Kirolos', agentName: 'Noha sameer' }, { id: 'X2002022', hrCode: '825802', tl: 'Youhana', agentName: 'Nourhan Salah' }, { id: 'X2089012', hrCode: '844970', tl: 'maher', agentName: 'NourhanMohamed' }, { id: 'X2048908', hrCode: '838909', tl: 'Youhana', agentName: 'Rana Shawky' }, { id: 'X2141359', hrCode: '851045', tl: 'maher', agentName: 'Rania Abdelsalam' }, { id: 'X2002023', hrCode: '825803', tl: 'maher', agentName: 'rawan ismael' }
-            ];
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Agent Data from your new provided sheet ---
+            const agentsData = [
+                { id: 'X2003111', hrCode: '825811', tl: 'maher', agentName: 'Abanoub Makram' }, { id: 'X2047656', hrCode: '838865', tl: 'Kirolos', agentName: 'Abdel Aaziz Ashraf' }, { id: 'X2027633', hrCode: '832336', tl: 'Kirolos', agentName: 'AbdElrahman Adel Mohamed' }, { id: 'X1264160', hrCode: '821310', tl: 'Youhana', agentName: 'Abdelrahman Salem' }, { id: 'X1387122', hrCode: '824283', tl: 'maher', agentName: 'Abdullah Tariq' }, { id: 'X2091475', hrCode: '844909', tl: 'Kirolos', agentName: 'Ahmed Elmohamdi' }, { id: 'X2100111', hrCode: '844985', tl: 'Youhana', agentName: 'Alaa Hamdy' }, { id: 'X1370543', hrCode: '824262', tl: 'maher', agentName: 'Alaa Tariq' }, { id: 'X1264180', hrCode: '821313', tl: 'Hamed', agentName: 'Ali Ashraf' }, { id: 'X2065273', hrCode: '838916', tl: 'Youhana', agentName: 'Ali Mohamed' }, { id: 'YEG002272', hrCode: '40544', tl: 'Youhana', agentName: 'Alshimaa Ahmed' }, { id: 'X2094368', hrCode: '844965', tl: 'Kirolos', agentName: 'Amal Ahmed' }, { id: 'X2040351', hrCode: '835769', tl: 'Kirolos', agentName: 'Amani Assem' }, { id: 'X1325802', hrCode: '823222', tl: 'maher', agentName: 'Amr Ahmed' }, { id: 'X2079589', hrCode: '842569', tl: 'Kirolos', agentName: 'Anoud Mohamed' }, { id: 'X2077125', hrCode: '842554', tl: 'maher', agentName: 'Aya Nabil' }, { id: 'X1277043', hrCode: '821327', tl: 'Hamed', agentName: 'Aya Rajab' }, { id: 'X2047645', hrCode: '838869', tl: 'Kirolos', agentName: 'Bassant Beshara Nas' }, { id: 'X2002026', hrCode: '825806', tl: 'maher', agentName: 'Beshoy Zekry' }, { id: 'X1325803', hrCode: '823223', tl: 'maher', agentName: 'David Emad' }, { id: 'X2079590', hrCode: '842570', tl: 'Kirolos', agentName: 'Dina Anwar' }, { id: 'X2082092', hrCode: '843497', tl: 'Youhana', agentName: 'Dina Atef' }, { id: 'X2094369', hrCode: '844966', tl: 'Kirolos', agentName: 'Doaa Ahmed' }, { id: 'X2091476', hrCode: '844910', tl: 'Kirolos', agentName: 'Donia Hosny' }, { id: 'X2082093', hrCode: '843498', tl: 'Youhana', agentName: 'Ebtesam Mahrous' }, { id: 'X2047646', hrCode: '838870', tl: 'Kirolos', agentName: 'Elaria Atef' }, { id: 'X2079591', hrCode: '842571', tl: 'Kirolos', agentName: 'Elham Abdelsalam' }, { id: 'X2047647', hrCode: '838871', tl: 'Kirolos', agentName: 'Eman Marey' }, { id: 'X2082094', hrCode: '843499', tl: 'Youhana', agentName: 'Eman Hossny' }, { id: 'X2047648', hrCode: '838872', tl: 'Kirolos', agentName: 'Enas Adel' }, { id: 'X2047649', hrCode: '838873', tl: 'Kirolos', agentName: 'Eslam Azhary' }, { id: 'X2094370', hrCode: '844967', tl: 'Kirolos', agentName: 'Esraa Ahmed' }, { id: 'X2047650', hrCode: '838874', tl: 'Kirolos', agentName: 'Esraa Ibrahim' }, { id: 'X2091477', hrCode: '844911', tl: 'Kirolos', agentName: 'Farah Atef' }, { id: 'X2047651', hrCode: '838875', tl: 'Kirolos', agentName: 'Fairouz Fanos' }, { id: 'X2047652', hrCode: '838876', tl: 'Kirolos', agentName: 'Filopateer Boshra' }, { id: 'X2047653', hrCode: '838877', tl: 'Kirolos', agentName: 'Habiba Montaser' }, { id: 'X2047654', hrCode: '838878', tl: 'Kirolos', agentName: 'Hagar Magdi' }, { id: 'X2094371', hrCode: '844968', tl: 'Kirolos', agentName: 'Heba Zakaria' }, { id: 'X2047655', hrCode: '838879', tl: 'Kirolos', agentName: 'Hisham Yosri' }, { id: 'X2047657', hrCode: '838880', tl: 'Kirolos', agentName: 'Hossam Zohair' }, { id: 'X2047658', hrCode: '838881', tl: 'Kirolos', agentName: 'Ibraheem Mamdoh' }, { id: 'X2047659', hrCode: '838882', tl: 'Kirolos', agentName: 'Eman Elsayed' }, { id: 'X2047660', hrCode: '838883', tl: 'Kirolos', agentName: 'Islam Siam' }, { id: 'X2047661', hrCode: '838884', tl: 'Kirolos', agentName: 'Lama Nabil' }, { id: 'X2047662', hrCode: '838885', tl: 'Kirolos', agentName: 'Lamiaa Essam' }, { id: 'X2047663', hrCode: '838886', tl: 'Kirolos', agentName: 'Maha Muhammed' }, { id: 'X2047664', hrCode: '838887', tl: 'Kirolos', agentName: 'Maha Tarek' }, { id: 'X2047665', hrCode: '838888', tl: 'Kirolos', agentName: 'Mahmod Ahmad' }, { id: 'X2047666', hrCode: '838889', tl: 'Kirolos', agentName: 'Mahmoud Ashraf' }, { id: 'X2047667', hrCode: '838890', tl: 'Kirolos', agentName: 'Mahmoud Anwar' }, { id: 'X2047668', hrCode: '838891', tl: 'Kirolos', agentName: 'Mahmoud Ibrahem' }, { id: 'X2047669', hrCode: '838892', tl: 'Kirolos', agentName: 'Mahmod Rashad' }, { id: 'X2047670', hrCode: '838893', tl: 'Kirolos', agentName: 'Mahrail Magid' }, { id: 'X2047671', hrCode: '838894', tl: 'Kirolos', agentName: 'Malak Abdelnaser' }, { id: 'X2047672', hrCode: '838895', tl: 'Kirolos', agentName: 'Manal Mohamed' }, { id: 'X2047673', hrCode: '838896', tl: 'Kirolos', agentName: 'Maram Mohamed' }, { id: 'X2047674', hrCode: '838897', tl: 'Kirolos', agentName: 'Mariam Moustafa' }, { id: 'X2047675', hrCode: '838898', tl: 'Kirolos', agentName: 'Mariam Nasser' }, { id: 'X2047676', hrCode: '838899', tl: 'Kirolos', agentName: 'Martina Nabil' }, { id: 'X2047677', hrCode: '838900', tl: 'Kirolos', agentName: 'Maiada Ali' }, { id: 'X2047678', hrCode: '838901', tl: 'Kirolos', agentName: 'Mayar Ismail' }, { id: 'X2002024', hrCode: '825804', tl: 'maher', agentName: 'Mina Ezat' }, { id: 'X1160340', hrCode: '817339', tl: 'maher', agentName: 'MinaMelad' }, { id: 'X1059943', hrCode: '40951', tl: 'Hamed', agentName: 'Moamen Samy' }, { id: 'X2046113', hrCode: '837347', tl: 'Youhana', agentName: 'Mohamed Ahmed' }, { id: 'X2141350', hrCode: '851052', tl: 'Kirolos', agentName: 'Mohamed Hamed Atya' }, { id: 'X2141351', hrCode: '851054', tl: 'Kirolos', agentName: 'Mohammed ibraheem' }, { id: 'X723901', hrCode: '40628', tl: 'Hamed', agentName: 'Mona hassan' }, { id: 'X1387129', hrCode: '824284', tl: 'maher', agentName: 'Mosaab Ali' }, { id: 'X1277020', hrCode: '821319', tl: 'Hamed', agentName: 'Muhammad Ismail' }, { id: 'X2122166', hrCode: '851055', tl: 'Kirolos', agentName: 'Muhammed Fathi' }, { id: 'X2108397', hrCode: '848192', tl: 'Kirolos', agentName: 'Nada Hamada' }, { id: 'X2082090', hrCode: '843495', tl: 'Youhana', agentName: 'Nermine Elfeki' }, { id: 'X2141339', hrCode: '851056', tl: 'Youhana', agentName: 'Nesma Mohamed' }, { id: 'X1075901', hrCode: '40986', tl: 'Kirolos', agentName: 'Noha sameer' }, { id: 'X2002022', hrCode: '825802', tl: 'Youhana', agentName: 'Nourhan Salah' }, { id: 'X2089012', hrCode: '844970', tl: 'maher', agentName: 'NourhanMohamed' }, { id: 'X2048908', hrCode: '838909', tl: 'Youhana', agentName: 'Rana Shawky' }, { id: 'X2141359', hrCode: '851045', tl: 'maher', agentName: 'Rania Abdelsalam' }, { id: 'X2002023', hrCode: '825803', tl: 'maher', agentName: 'rawan ismael' }
+            ];
 
-            // --- DOM Element References ---
-            const form = document.getElementById('event-form');
-            const agentIdInput = document.getElementById('agent-id');
-            const agentNameInput = document.getElementById('agent-name');
-            const hrCodeInput = document.getElementById('hr-code');
-            const teamLeaderInput = document.getElementById('team-leader');
-            const dateTimeSection = document.getElementById('date-time-section');
-            const addDateBtn = document.getElementById('add-date-btn');
-            const dateCounter = document.getElementById('date-counter');
-            const formContainer = document.getElementById('form-container');
-            const newFormBtn = document.getElementById('new-form-btn');
-            const statusContainer = document.getElementById('submission-status-container');
-            const statusHeading = document.getElementById('status-heading');
-            const statusMessage = document.getElementById('status-message');
-            const loadingSpinner = document.getElementById('loading-spinner');
+            // --- DOM Element References ---
+            const form = document.getElementById('event-form');
+            const agentIdInput = document.getElementById('agent-id');
+            const agentNameInput = document.getElementById('agent-name');
+            const hrCodeInput = document.getElementById('hr-code');
+            const teamLeaderInput = document.getElementById('team-leader');
+            const dateTimeSection = document.getElementById('date-time-section');
+            const addDateBtn = document.getElementById('add-date-btn');
+            const dateCounter = document.getElementById('date-counter');
+            const formContainer = document.getElementById('form-container');
+            const newFormBtn = document.getElementById('new-form-btn');
+            const statusContainer = document.getElementById('submission-status-container');
+            const statusHeading = document.getElementById('status-heading');
+            const statusMessage = document.getElementById('status-message');
+            const loadingSpinner = document.getElementById('loading-spinner');
 
-            // !!! IMPORTANT: THIS URL SHOULD BE YOUR GOOGLE APPS SCRIPT URL !!!
-            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxg1qCw7i-1peO19OiX_Z7u9LlzgzKpMtsk3HhFJ75KrjLBpgQMEB8cA46y-hXduRPqbA/exec";
+            // !!! IMPORTANT: THIS URL SHOULD BE YOUR GOOGLE APPS SCRIPT URL !!!
+            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxaM9rYx10x3Zkx9gUlvTzNH5hQ0bY090DfOCIu80Qpedd5zg0a7bVCcP3hQ5hLR3pW/exec";
 
-            const MAX_ENTRIES = 10;
-            let entryCount = 0;
+            const MAX_ENTRIES = 10;
+            let entryCount = 0;
 
-            // --- Functions ---
-            const populateIds = () => {
-                const dataList = document.getElementById('agent-id-list');
-                agentsData.forEach(agent => {
-                    const option = document.createElement('option');
-                    option.value = agent.id;
-                    dataList.appendChild(option);
-                });
-            };
+            // --- Functions ---
+            const populateIds = () => {
+                const dataList = document.getElementById('agent-id-list');
+                agentsData.forEach(agent => {
+                    const option = document.createElement('option');
+                    option.value = agent.id;
+                    dataList.appendChild(option);
+                });
+            };
 
-            const handleIdChange = (e) => {
-                const selectedId = e.target.value;
-                const selectedAgent = agentsData.find(agent => agent.id === selectedId);
+            const handleIdChange = (e) => {
+                const selectedId = e.target.value;
+                const selectedAgent = agentsData.find(agent => agent.id === selectedId);
 
-                if (selectedAgent) {
-                    agentNameInput.value = selectedAgent.agentName;
-                    hrCodeInput.value = selectedAgent.hrCode;
-                    teamLeaderInput.value = selectedAgent.tl;
-                } else {
-                    agentNameInput.value = '';
-                    hrCodeInput.value = '';
-                    teamLeaderInput.value = '';
-                }
-            };
+                if (selectedAgent) {
+                    agentNameInput.value = selectedAgent.agentName;
+                    hrCodeInput.value = selectedAgent.hrCode;
+                    teamLeaderInput.value = selectedAgent.tl;
+                } else {
+                    agentNameInput.value = '';
+                    hrCodeInput.value = '';
+                    teamLeaderInput.value = '';
+                }
+            };
 
-            const updateEntryCounter = () => {
-                dateCounter.textContent = `${entryCount} of ${MAX_ENTRIES} entries added.`;
-                addDateBtn.disabled = entryCount >= MAX_ENTRIES;
-                addDateBtn.classList.toggle('opacity-50', entryCount >= MAX_ENTRIES);
-                addDateBtn.classList.toggle('cursor-not-allowed', entryCount >= MAX_ENTRIES);
-            };
+            const updateEntryCounter = () => {
+                dateCounter.textContent = `${entryCount} of ${MAX_ENTRIES} entries added.`;
+                addDateBtn.disabled = entryCount >= MAX_ENTRIES;
+                addDateBtn.classList.toggle('opacity-50', entryCount >= MAX_ENTRIES);
+                addDateBtn.classList.toggle('cursor-not-allowed', entryCount >= MAX_ENTRIES);
+            };
 
-            const addDateTimeEntry = () => {
-                if (entryCount >= MAX_ENTRIES) return;
-                entryCount++;
+            const addDateTimeEntry = () => {
+                if (entryCount >= MAX_ENTRIES) return;
+                entryCount++;
 
-                const entryId = `date-entry-${entryCount}`;
-                const entryDiv = document.createElement('div');
-                entryDiv.className = 'p-4 border rounded-lg bg-gray-50 fade-in space-y-4';
-                entryDiv.id = entryId;
+                const entryId = `date-entry-${entryCount}`;
+                const entryDiv = document.createElement('div');
+                entryDiv.className = 'p-4 border rounded-lg bg-gray-50 fade-in space-y-4';
+                entryDiv.id = entryId;
 
-                entryDiv.innerHTML = `
-                    <div class="flex justify-between items-center">
-                        <h3 class="font-semibold text-gray-600">Entry #${entryCount}</h3>
-                        ${entryCount > 1 ? `<button type="button" class="remove-date-btn text-red-500 hover:text-red-700 font-semibold text-sm" data-target="${entryId}">Remove</button>` : ''}
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                        <div>
-                            <label for="date-${entryCount}" class="block text-sm font-medium text-gray-700 mb-1">Date</label>
-                            <input type="date" id="date-${entryCount}" name="event-date" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="time-from-${entryCount}" class="block text-sm font-medium text-gray-700 mb-1">Time From</label>
-                            <input type="time" id="time-from-${entryCount}" name="time-from" required class="time-input w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="time-to-${entryCount}" class="block text-sm font-medium text-gray-700 mb-1">Time To</label>
-                            <input type="time" id="time-to-${entryCount}" name="time-to" required class="time-input w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="duration-${entryCount}" class="block text-sm font-medium text-gray-700 mb-1">Duration</label>
-                            <input type="text" id="duration-${entryCount}" name="duration" readonly class="duration-output w-full px-3 py-2 border border-gray-200 bg-gray-100 rounded-lg readonly-input">
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                         <div>
-                            <label for="exception-type-${entryCount}" class="block text-sm font-medium text-gray-700 mb-1">Exception Type</label>
-                            <select id="exception-type-${entryCount}" name="exception-type" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-blue-500">
-                                <option value="" disabled selected>Select a Type</option>
-                                <option value="Follow up">Follow up</option>
-                                <option value="Meeting">Meeting</option>
-                                <option value="Shadowing">Shadowing</option>
-                                <option value="Happy Call">Happy Call</option>
-                                <option value="Task">Task</option>
-                                <option value="Technical issue">Technical issue</option>
-                                <option value="Training">Training</option>
-                                <option value="Support">Support</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="exception-reason-${entryCount}" class="block text-sm font-medium text-gray-700 mb-1">Exception Reason</label>
-                            <textarea id="exception-reason-${entryCount}" name="exception-reason" rows="1" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-blue-500"></textarea>
-                        </div>
-                    </div>
-                `;
-                dateTimeSection.appendChild(entryDiv);
-                updateEntryCounter();
-            };
+                entryDiv.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-semibold text-gray-600">Entry #${entryCount}</h3>
+                        ${entryCount > 1 ? `<button type="button" class="remove-date-btn text-red-500 hover:text-red-700 font-semibold text-sm" data-target="${entryId}">Remove</button>` : ''}
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                        <div>
+                            <label for="date-${entryCount}" class="block text-sm font-medium text-gray-700 mb-1">Date</label>
+                            <input type="date" id="date-${entryCount}" name="event-date" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="time-from-${entryCount}" class="block text-sm font-medium text-gray-700 mb-1">From</label>
+                            <input type="time" id="time-from-${entryCount}" name="time-from" required class="time-input w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="time-to-${entryCount}" class="block text-sm font-medium text-gray-700 mb-1">To</label>
+                            <input type="time" id="time-to-${entryCount}" name="time-to" required class="time-input w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="duration-${entryCount}" class="block text-sm font-medium text-gray-700 mb-1">Duration</label>
+                            <input type="text" id="duration-${entryCount}" name="duration" readonly class="duration-output w-full px-3 py-2 border border-gray-200 bg-gray-100 rounded-lg readonly-input">
+                        </div>
+                    </div>
+                `;
+                dateTimeSection.appendChild(entryDiv);
+                updateEntryCounter();
+            };
 
-            const calculateDuration = (timeFrom, timeTo) => {
-                if (!timeFrom || !timeTo) return '';
-                const from = new Date(`1970-01-01T${timeFrom}:00`);
-                const to = new Date(`1970-01-01T${timeTo}:00`);
-                let diff = to.getTime() - from.getTime();
-                if (diff < 0) diff += 24 * 60 * 60 * 1000;
-                const hours = Math.floor(diff / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                return `${hours}h ${minutes}m`;
-            };
+            const calculateDuration = (timeFrom, timeTo) => {
+                if (!timeFrom || !timeTo) return '';
+                const from = new Date(`1970-01-01T${timeFrom}:00`);
+                const to = new Date(`1970-01-01T${timeTo}:00`);
+                let diff = to.getTime() - from.getTime();
+                if (diff < 0) diff += 24 * 60 * 60 * 1000;
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                return `${hours}h ${minutes}m`;
+            };
 
-            const handleFormSubmit = async (e) => {
-                e.preventDefault();
-                if (SCRIPT_URL === "PASTE_YOUR_WEB_APP_URL_HERE") {
-                    alert("Please paste your Google Apps Script URL into the SCRIPT_URL constant in the HTML file.");
-                    return;
-                }
+            const handleFormSubmit = async (e) => {
+                e.preventDefault();
+                if (SCRIPT_URL === "PASTE_YOUR_WEB_APP_URL_HERE") {
+                    alert("Please paste your Google Apps Script URL into the SCRIPT_URL constant in the HTML file.");
+                    return;
+                }
 
-                formContainer.classList.add('hidden');
-                statusContainer.classList.remove('hidden');
-                loadingSpinner.style.display = 'block';
-                statusHeading.textContent = 'Submitting...';
-                statusMessage.textContent = 'Please wait while we send your activity details.';
-                newFormBtn.classList.add('hidden');
+                formContainer.classList.add('hidden');
+                statusContainer.classList.remove('hidden');
+                loadingSpinner.style.display = 'block';
+                statusHeading.textContent = 'Submitting...';
+                statusMessage.textContent = 'Please wait while we send your activity details.';
+                newFormBtn.classList.add('hidden');
 
-                const baseData = {
-                    agentId: document.getElementById('agent-id').value,
-                    agentName: document.getElementById('agent-name').value,
-                    hrCode: document.getElementById('hr-code').value,
-                    teamLeader: document.getElementById('team-leader').value,
-                };
+                const baseData = {
+                    agentId: document.getElementById('agent-id').value,
+                    agentName: document.getElementById('agent-name').value,
+                    teamLeader: document.getElementById('team-leader').value,
+                    hrCode: document.getElementById('hr-code').value,
+                    exceptionType: document.getElementById('exception-type').value,
+                    exceptionReason: document.getElementById('exception-reason').value,
+                };
 
-                const dateEntries = document.querySelectorAll('[id^="date-entry-"]');
-                const submissionPromises = [];
+                const dateEntries = document.querySelectorAll('[id^="date-entry-"]');
+                const submissionPromises = [];
 
-                dateEntries.forEach(entry => {
-                    const entryNumber = entry.id.split('-')[2];
-                    const date = entry.querySelector(`#date-${entryNumber}`).value;
-                    const timeFrom = entry.querySelector(`#time-from-${entryNumber}`).value;
-                    const timeTo = entry.querySelector(`#time-to-${entryNumber}`).value;
-                    const duration = entry.querySelector(`#duration-${entryNumber}`).value;
-                    const exceptionType = entry.querySelector(`select[name="exception-type"]`).value;
-                    const exceptionReason = entry.querySelector(`textarea[name="exception-reason"]`).value;
+                dateEntries.forEach(entry => {
+                    const entryNumber = entry.id.split('-')[2];
+                    const date = entry.querySelector(`#date-${entryNumber}`).value;
+                    const timeFrom = entry.querySelector(`#time-from-${entryNumber}`).value;
+                    const timeTo = entry.querySelector(`#time-to-${entryNumber}`).value;
+                    const duration = entry.querySelector(`#duration-${entryNumber}`).value;
 
-                    if (date && timeFrom && timeTo) {
-                        const rowData = { ...baseData, date, timeFrom, timeTo, duration, exceptionType, exceptionReason };
-                        const promise = fetch(SCRIPT_URL, {
-                            method: 'POST',
-                            mode: 'no-cors',
-                            cache: 'no-cache',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(rowData),
-                            redirect: 'follow'
-                        });
-                        submissionPromises.push(promise);
-                    }
-                });
+                    if (date && timeFrom && timeTo) {
+                        const rowData = { ...baseData, date, timeFrom, timeTo, duration };
+                        const promise = fetch(SCRIPT_URL, {
+                            method: 'POST',
+                            mode: 'no-cors',
+                            cache: 'no-cache',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(rowData),
+                            redirect: 'follow'
+                        });
+                        submissionPromises.push(promise);
+                    }
+                });
 
-                try {
-                    await Promise.all(submissionPromises);
-                    loadingSpinner.style.display = 'none';
-                    statusHeading.textContent = 'Submission Successful!';
-                    statusMessage.textContent = 'Your activity has been recorded in the Google Sheet.';
-                } catch (error) {
-                    console.error('Error submitting form:', error);
-                    loadingSpinner.style.display = 'none';
-                    statusHeading.textContent = 'Submission Failed';
-                    statusMessage.textContent = 'An error occurred. Please try again.';
-                } finally {
-                    newFormBtn.classList.remove('hidden');
-                }
-            };
-            
-            const resetFormView = () => {
-                form.reset();
-                dateTimeSection.innerHTML = '';
-                agentNameInput.value = '';
-                hrCodeInput.value = '';
-                teamLeaderInput.value = '';
-                entryCount = 0;
-                addDateTimeEntry();
-                statusContainer.classList.add('hidden');
-                formContainer.classList.remove('hidden');
-            };
+                try {
+                    await Promise.all(submissionPromises);
+                    loadingSpinner.style.display = 'none';
+                    statusHeading.textContent = 'Submission Successful!';
+                    statusMessage.textContent = 'Your activity has been recorded in the Google Sheet.';
+                } catch (error) {
+                    console.error('Error submitting form:', error);
+                    loadingSpinner.style.display = 'none';
+                    statusHeading.textContent = 'Submission Failed';
+                    statusMessage.textContent = 'An error occurred. Please try again.';
+                } finally {
+                    newFormBtn.classList.remove('hidden');
+                }
+            };
+            
+            const resetFormView = () => {
+                form.reset();
+                dateTimeSection.innerHTML = '';
+                agentNameInput.value = '';
+                hrCodeInput.value = '';
+                teamLeaderInput.value = '';
+                entryCount = 0;
+                addDateTimeEntry();
+                statusContainer.classList.add('hidden');
+                formContainer.classList.remove('hidden');
+            };
 
-            // --- Event Listeners ---
-            agentIdInput.addEventListener('input', handleIdChange);
-            addDateBtn.addEventListener('click', addDateTimeEntry);
+            // --- Event Listeners ---
+            agentIdInput.addEventListener('input', handleIdChange);
+            addDateBtn.addEventListener('click', addDateTimeEntry);
 
-            dateTimeSection.addEventListener('click', (e) => {
-                if (e.target.classList.contains('remove-date-btn')) {
-                    const targetId = e.target.dataset.target;
-                    document.getElementById(targetId)?.remove();
-                    entryCount--;
-                    updateEntryCounter();
-                }
-            });
+            dateTimeSection.addEventListener('click', (e) => {
+                if (e.target.classList.contains('remove-date-btn')) {
+                    const targetId = e.target.dataset.target;
+                    document.getElementById(targetId)?.remove();
+                    entryCount--;
+                    updateEntryCounter();
+                }
+            });
 
-            dateTimeSection.addEventListener('input', (e) => {
-                 if (e.target.classList.contains('time-input')) {
-                    const parentEntry = e.target.closest('[id^="date-entry-"]');
-                    const timeFrom = parentEntry.querySelector('input[name="time-from"]').value;
-                    const timeTo = parentEntry.querySelector('input[name="time-to"]').value;
-                    const durationOutput = parentEntry.querySelector('.duration-output');
-                    durationOutput.value = calculateDuration(timeFrom, timeTo);
-                 }
-            });
+            dateTimeSection.addEventListener('input', (e) => {
+                 if (e.target.classList.contains('time-input')) {
+                    const parentEntry = e.target.closest('[id^="date-entry-"]');
+                    const timeFrom = parentEntry.querySelector('input[name="time-from"]').value;
+                    const timeTo = parentEntry.querySelector('input[name="time-to"]').value;
+                    const durationOutput = parentEntry.querySelector('.duration-output');
+                    durationOutput.value = calculateDuration(timeFrom, timeTo);
+                 }
+            });
 
-            form.addEventListener('submit', handleFormSubmit);
-            newFormBtn.addEventListener('click', resetFormView);
+            form.addEventListener('submit', handleFormSubmit);
+            newFormBtn.addEventListener('click', resetFormView);
 
-            // --- Initial Setup ---
-            populateIds();
-            addDateTimeEntry();
-        });
-    </script>
+            // --- Initial Setup ---
+            populateIds();
+            addDateTimeEntry();
+        });
+    </script>
 </body>
 </html>
