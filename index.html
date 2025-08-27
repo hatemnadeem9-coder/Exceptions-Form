@@ -272,17 +272,30 @@
                     const timeTo = entry.querySelector(`#time-to-${entryNumber}`).value;
                     const duration = entry.querySelector(`#duration-${entryNumber}`).value;
 
-                    if (date && timeFrom && timeTo) {
-                        const rowData = { ...baseData, exceptionType, exceptionReason, date, timeFrom, timeTo, duration };
-                        const promise = fetch(SCRIPT_URL, {
-                            method: 'POST',
-                            cache: 'no-cache',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(rowData),
-                            redirect: 'follow'
-                        });
-                        submissionPromises.push(promise);
-                    }
+                  if (date && timeFrom && timeTo) {
+    const rowData = {
+        agentId: baseData.agentId,
+        agentName: baseData.agentName,
+        hrCode: baseData.hrCode,
+        teamLeader: baseData.teamLeader,
+        exceptionType: exceptionType,
+        exceptionReason: exceptionReason,
+        date: date,
+        timeFrom: timeFrom,
+        timeTo: timeTo,
+        duration: duration
+    };
+
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyC-B7dLd8KUTxF3Ab4lEsHjQzfi0m3Hs0cHxyZ4pOvmDApf4aWBrt-ZbVuxSTrYA6xSA/exec";
+
+    const promise = fetch(SCRIPT_URL, {
+        method: 'POST',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(rowData),
+
                 });
 
                 try {
@@ -345,6 +358,7 @@
     </script>
 </body>
 </html>
+
 
 
 
